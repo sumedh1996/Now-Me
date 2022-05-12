@@ -1,86 +1,80 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
+import { useState } from 'react'
+import { HiEyeOff } from 'react-icons/Hi'
+import { HiEye } from 'react-icons/Hi'
 
-const Home: NextPage = () => {
+export interface ILogin {
+  userName: string
+  password: string
+}
+
+const Login: NextPage = () => {
+  const [userName, setUserName] = useState('')
+  const [password, setPassword] = useState('')
+
+  const [togglePassword, setTogglePassword] = useState(false)
+
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center py-2">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to{' '}
-          <a className="text-blue-600" href="https://nextjs.org">
-            Next.js!
-          </a>
-        </h1>
-
-        <p className="mt-3 text-2xl">
-          Get started by editing{' '}
-          <code className="rounded-md bg-gray-100 p-3 font-mono text-lg">
-            pages/index.tsx
-          </code>
-        </p>
-
-        <div className="mt-6 flex max-w-4xl flex-wrap items-center justify-around sm:w-full">
-          <a
-            href="https://nextjs.org/docs"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Find in-depth information about Next.js features and its API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Learn &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Learn about Next.js in an interactive course with quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Examples &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Discover and deploy boilerplate example Next.js projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Deploy &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+    <div className="flex min-h-screen flex-col items-center justify-center bg-black py-2">
+      <div className="m-auto h-[463px] w-[420px] rounded-lg border-2 border-border-card bg-background-light ">
+        <div className="mt-10 w-full text-center">
+          <p className="text-sm text-textColor-dark">WELCOME BACK</p>
+          <p className="text-lg text-white">Log into your account</p>
         </div>
-      </main>
-
-      <footer className="flex h-24 w-full items-center justify-center border-t">
-        <a
-          className="flex items-center justify-center gap-2"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-        </a>
-      </footer>
+        <div className="px-6 pb-4 pt-[45px]">
+          <p className="pb-2.5 text-textColor-light">Email or Username</p>
+          <input
+            type="text"
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
+            className="w-full rounded-lg border border-border-light bg-background-light p-2 text-textColor-white placeholder:text-textColor-placeholder after:border-border-light focus-within:outline-0 active:border-border-light"
+            placeholder="Enter your email or username"
+          />
+        </div>
+        <div className="px-6">
+          <div className="flex w-full justify-between">
+            <p className="pb-2.5 text-textColor-light">Password</p>
+            <p className="pb-2.5 text-textColor-light">Forgot Password</p>
+          </div>
+          <div className="flex items-center justify-between rounded-lg border border-border-light ">
+            <input
+              type={togglePassword ? 'text' : 'password'}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full bg-background-light p-2 text-textColor-white placeholder:text-textColor-placeholder  focus-within:outline-0"
+              placeholder="Enter your email or username"
+            />
+            {togglePassword ? (
+              <HiEyeOff
+                className="mr-2 cursor-pointer text-textColor-light"
+                onClick={() => setTogglePassword(!togglePassword)}
+                size={25}
+              />
+            ) : (
+              <HiEye
+                className="mr-2  cursor-pointer text-textColor-light"
+                onClick={() => setTogglePassword(!togglePassword)}
+                size={25}
+              />
+            )}
+          </div>
+        </div>
+        <div className=" mx-6 pt-[20px] ">
+          <Link href={'/home'}>
+            <button className="w-full rounded-lg bg-button-blue p-2 text-white">
+              Login now
+            </button>
+          </Link>
+        </div>
+        <p className="px-6 pt-3 text-textColor-dark">
+          Not registered yet?{' '}
+          <span className="text-textColor-light">Register →</span>
+        </p>
+      </div>
     </div>
   )
 }
 
-export default Home
+export default Login
