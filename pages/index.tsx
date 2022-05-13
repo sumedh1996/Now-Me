@@ -5,10 +5,6 @@ import { useState } from 'react'
 import { HiEyeOff } from 'react-icons/Hi'
 import { HiEye } from 'react-icons/Hi'
 
-export interface ILogin {
-  userName: string
-  password: string
-}
 
 const Login: NextPage = () => {
   const [userName, setUserName] = useState('')

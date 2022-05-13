@@ -4,6 +4,8 @@ import Post1 from '../src/components/post1'
 import Post from '../src/components/post1'
 import Post2 from '../src/components/post2'
 import Modal from 'react-modal'
+import ReactModal from 'react-modal'
+import AuthModal from '../src/components/authModal'
 
 function HomeScreen() {
   const [isModalOpen, setIsModalOpen] = React.useState(false)
@@ -46,23 +48,29 @@ function HomeScreen() {
           <Post2 />
         </div>
       </div>
-      <Modal
+      <ReactModal
         isOpen={isModalOpen}
-        onRequestClose={closeModal}
-        //  style={customStyles}
-        className="bg-red-400"
-        overlayClassName="bg-red-400"
+        contentLabel="Minimal Modal Example"
+        style={{
+          overlay: {
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.75)',
+          },
+          content: {
+            position: 'absolute',
+            width: 463,
+            height: 506,
+            margin: 'auto',
+            background: '#27292D',
+          },
+        }}
       >
-        <button onClick={closeModal}>close</button>
-        <div>I am a modal</div>
-        <form>
-          <input />
-          <button>tab navigation</button>
-          <button>stays</button>
-          <button>inside</button>
-          <button>the modal</button>
-        </form>
-      </Modal>
+        <AuthModal closeModal={closeModal} />
+      </ReactModal>
     </div>
   )
 }
