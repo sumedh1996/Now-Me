@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { HiEyeOff } from 'react-icons/Hi'
 import { HiEye } from 'react-icons/Hi'
+import { AiFillCloseCircle } from 'react-icons/Ai'
+
 
 function SignInModalContent({ setIsLogin, closeModal }: any) {
   const [userName, setUserName] = useState('')
@@ -13,11 +15,18 @@ function SignInModalContent({ setIsLogin, closeModal }: any) {
 
   return (
     <div>
-      <div className="mt-10 w-full text-center">
-        <p className="text-sm text-textColor-dark">WELCOME BACK</p>
-        <p className="text-lg text-white">Log into your account</p>
+      <div>
+        <AiFillCloseCircle
+          onClick={closeModal}
+          size={32}
+          className={'float-right text-white'}
+        />
       </div>
-      <div className="px-6 pb-4 pt-[45px]">
+      <div className="w-full pt-4 text-center">
+        <p className="text-sm text-textColor-dark ">WELCOME BACK</p>
+        <p className="pt-1 text-lg text-white">Log into your account</p>
+      </div>
+      <div className=" pb-4 pt-[45px]">
         <p className="pb-2.5 text-textColor-light">Email or Username</p>
         <input
           type="text"
@@ -27,7 +36,7 @@ function SignInModalContent({ setIsLogin, closeModal }: any) {
           placeholder="Enter your email or username"
         />
       </div>
-      <div className="px-6">
+      <div className="">
         <div className="flex w-full justify-between">
           <p className="pb-2.5 text-textColor-light">Password</p>
           <p className="pb-2.5 text-textColor-light">Forgot Password</p>
@@ -55,7 +64,7 @@ function SignInModalContent({ setIsLogin, closeModal }: any) {
           )}
         </div>
       </div>
-      <div className=" mx-6 pt-[20px] ">
+      <div className="  pt-[30px] ">
         <Link href={'/home'}>
           <button className="w-full rounded-lg bg-button-blue p-2 text-white">
             Login now
@@ -63,7 +72,7 @@ function SignInModalContent({ setIsLogin, closeModal }: any) {
         </Link>
       </div>
       <p
-        className="cursor-pointer px-6 pt-3 text-textColor-dark"
+        className="cursor-pointer  pt-3 text-textColor-dark"
         onClick={() => setIsLogin(false)}
       >
         Not registered yet?{' '}

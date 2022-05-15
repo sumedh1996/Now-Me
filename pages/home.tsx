@@ -30,7 +30,6 @@ function HomeScreen() {
       <div className="container mx-auto h-full  ">
         <h1
           className="pt-8 text-[28px] font-medium text-textColor-light"
-          onClick={openModal}
         >
           Hello Jane
         </h1>
@@ -39,7 +38,7 @@ function HomeScreen() {
           community 🤗
         </p>
         <div className="pt-6 pb-4">
-          <CreatePost />
+          <CreatePost openModal={openModal} />
         </div>
         <div className="pb-4">
           <Post1 />

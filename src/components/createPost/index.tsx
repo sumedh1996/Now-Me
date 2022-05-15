@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 
-function CreatePost() {
+function CreatePost({ openModal }: any) {
   return (
     <div className="bg-background flex flex-col rounded-lg border-2 border-border-light px-5">
       <p className="pb-4 pt-6 text-lg text-textColor-light">Create post</p>
@@ -17,7 +17,10 @@ function CreatePost() {
         />
       </div>
       <div className="pt-4 pb-6">
-        <button className="float-right rounded-lg bg-button-blue py-2 px-9 text-white">
+        <button
+          className="float-right rounded-lg bg-button-blue py-2 px-9 text-white"
+          onClick={() => openModal()}
+        >
           Post
         </button>
       </div>

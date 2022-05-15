@@ -16,13 +16,17 @@ function SignUpModalContent({ setIsLogin, closeModal }: any) {
   return (
     <div>
       <div>
-        <AiFillCloseCircle onClick={closeModal} />
+        <AiFillCloseCircle
+          onClick={closeModal}
+          size={32}
+          className={'float-right text-white'}
+        />
       </div>
-      <div className="mt-10 w-full text-center">
-        <p className="text-sm text-textColor-dark">Signup</p>
-        <p className="text-lg text-white">Create an account to continue</p>
+      <div className="w-full pt-4 text-center">
+        <p className="text-sm text-textColor-dark ">SIGN UP</p>
+        <p className="pt-1 text-lg text-white">Create an account to continue</p>
       </div>
-      <div className="px-6 pb-4 pt-[45px]">
+      <div className=" pb-4 pt-8">
         <p className="pb-2.5 text-textColor-light">Email</p>
         <input
           type="text"
@@ -42,7 +46,7 @@ function SignUpModalContent({ setIsLogin, closeModal }: any) {
           placeholder="Choose a preferred username"
         />
       </div>
-      <div className="px-6">
+      <div className="">
         <p className="pb-2.5 text-textColor-light">Password</p>
         <div className="flex items-center justify-between rounded-lg border border-border-light ">
           <input
@@ -67,7 +71,7 @@ function SignUpModalContent({ setIsLogin, closeModal }: any) {
           )}
         </div>
       </div>
-      <div className=" mx-6 pt-[20px] ">
+      <div className=" pt-[20px]  ">
         <Link href={'/home'}>
           <button className="w-full rounded-lg bg-button-blue p-2 text-white">
             Continue
@@ -75,7 +79,7 @@ function SignUpModalContent({ setIsLogin, closeModal }: any) {
         </Link>
       </div>
       <p
-        className="cursor-pointer px-6 pt-3 text-textColor-dark"
+        className="cursor-pointer pt-3 text-textColor-dark"
         onClick={() => setIsLogin(true)}
       >
         Already have an account?{' '}
